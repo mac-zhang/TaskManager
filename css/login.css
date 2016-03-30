@@ -1,0 +1,107 @@
+
+#login_background{
+	width 				: 1100px;
+	height 				: 950px;
+	margin-left 		: auto; 
+	margin-right 		: auto;
+	background-color	: #ffffff;
+}
+.login_frame{
+	width				: 700px;
+	height       		: 700px;
+	border: 2px solid;
+	border-color 		: #FFFFFF;
+	margin-left 		: auto; 
+	margin-right 		: auto;
+	margin-top: 70px;
+}
+.logo_div{
+	display: 			 block;
+	width				: 700px;
+	height       		: 200px;
+	background 			: url(../img/logo.png);
+}
+.login_title{
+	display: 			 block;
+	width 				: 700px;
+	height 				: 100px;
+	font: 700 50px/100px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: -2px;
+    color: rgb(52,73,94);
+	margin-left 		: auto; 
+	margin-right 		: auto;
+	margin-top: 0px;
+	text-align: center;
+}
+.login_input_div{
+	width 				: 300px;
+	height 				: 450px;
+	margin-left 		: auto; 
+	margin-right 		: auto;
+	margin-top: 50px;
+}
+.login_username_input{
+	width: 300px;
+	height: 50px;
+	background: #fff;
+    border: 2px solid #2296EA;
+    border-radius: 5px;
+    margin-bottom: 18px;
+}
+.user_ico_span{
+	display: inline-block;
+}
+.user_ico_img{
+	background: url(../img/user_icon.png);
+    display: inline-block;
+    height: 18px;
+    margin: 0 0 0 8px;
+    vertical-align: middle;
+    width: 18px;
+}
+.user_input_span{
+	display: inline-block;
+	height: 48px;
+}
+.user_input{
+	background: none;
+    border: 0;
+    font-size: 16px;
+    font-family: "微软雅黑";
+    margin: 8px 4px 3px;
+    outline: none;
+    width: 230px;
+}
+.password_ico_img{
+	background: url(../img/password_icon.png);
+    display: inline-block;
+    height: 18px;
+    margin: 0 0 0 8px;
+    vertical-align: middle;
+    width: 18px;
+}
+.login_button{
+	width: 300px;
+	height: 50px;
+	background: #22AC69;
+	color: #FFFFFF;
+	border: none;
+	border-radius: 5px;
+	line-height: 40px;
+    text-indent: 0;
+	font-size: 15px;
+    font-family: "微软雅黑";
+    cursor: pointer;
+}
+.login_button:hover{
+	background: #1abc9c;
+}
+
+
+
+
+
+
+
+
+
