@@ -1,6 +1,6 @@
 
 <?php 
-	include_once "index.php";  
+	include_once "tool/common.php";  
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN" class="uk-height-1-1">

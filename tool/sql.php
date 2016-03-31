@@ -19,9 +19,10 @@ return array(
 /*************************************** Login SQL *************************************************/
 		
 	"person_info_by_account"=>array(
-		"SELECT * FROM person_info where User_account = %s",
-		1,
+		"SELECT * FROM person_info where User_account = '%s' && Password = '%s'",
+		2,
 		"user_account",
+		"user_password",
 	),
 );
 ?>

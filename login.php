@@ -1,9 +1,50 @@
+<!DOCTYPE html>
+
 <?php
-	require_once("/tool/conn.php");
-	include_once "index.php";  
+	require_once("tool/conn.php");
+	require_once("tool/common.php");
+	
+//if(options("login_check")){
+//	login_check($_POST['Login_account'], $_POST['Login_password']);
+//}
+
+if(isset($_POST['label'])&&$_POST['label'] == "login_check"){
+	login_check($_POST['Login_account'], $_POST['Login_password']);
+}
+
+function login_check($login_account, $login_password){
+//					echo $login_account."+".$login_password;
+//					echo $_POST['login_check']."&&".$_POST['Login_account']."&&".$_POST['Login_password'];
+					$person_info_sql = array(
+							"person_info_by_account",
+							$login_account,
+							$login_password,
+					);
+					$person_info_data = array_sql($person_info_sql);
+					
+					if(count($person_info_data)==1){
+						$_SESSION['login_account']		= $login_account;
+						$_SESSION['login_password']		= $login_password;
+//						echo "sussuses";
+						
+						header("HTTP/1.0 200 OK");
+						return true;
+					}else{
+						header("HTTP/1.0 402 Unauthorized");
+						return false;
+					}
+					
+//	    			for($i=0;$i < count($person_info_data);$i++){
+//	    				echo "
+//	    				<tr><td>".$person_info_data[$i]["User_account"]."</td>
+//	    					<td>".$person_info_data[$i]["Password"]."</td>
+//	    					<td>".$person_info_data[$i]["Office"]."</td>
+//	    				</tr>
+//	    				";						
+//	    			}
+}
 ?>
 
-<!DOCTYPE html>
 <html lang="zh-CN" class="uk-height-1-1">
 <head>
 	<meta charset="utf-8" />
@@ -43,30 +84,21 @@
     			<input id="login_button" class="login_button" type="button" name="login_button" value="登          录"/>			
     		</div>
     		
-    		<?php
-    			$person_info_sql = array(
-						"person_info_by_account",
-						$login_account,
-				);
-				$person_info_data = array_sql($person_info_sql);
-    		?>
+    		<div id='login_check'>
+    				<table>
+    			
+    				<?php					
+//    					echo $_POST['Login_account']."&&".$_POST['Login_password'];
+//						login_check("130099", "xiaolizi");
+//						login_check($_POST["Login_account"], $_POST["Login_password"]);
+    				?>
+    			
+    				</table>
+    		</div>   
     		
-    		<div id="login_check">
-    			<table>
-    			<?php
-    			for($i=0;$i < count($person_info_data);$i++){
-    				echo "
-    				<tr><td>".$person_info_data[$i]["User_account"]."</td>
-    					<td>".$person_info_data[$i]["Password"]."</td>
-    				</tr>
-    				";
-					
-    			}
-    			?>
-    			</table>
-    		</div>
+    			
+    			
     	</div>
     </div>
 </body>
-
 </html>
