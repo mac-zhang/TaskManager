@@ -31,8 +31,8 @@ function login_callback()
 					},
 					success: function(){
 //						alert("登录成功");
-//						addCookie("userName", login_account, 7, "/");
-//						addCookie("userPass", login_password, 7,"/");  
+						addCookie("userName", login_account, 7, "/");
+						addCookie("userPass", login_password, 7,"/");  
 						location.assign('task.php');
 //						if(checked){
 //							location.assign('task.php');
@@ -47,4 +47,67 @@ function login_callback()
 		
 //		return location.assign('task.php');
 	});
+	
+	
 }
+
+function login_keydown(){
+	if(event.keyCode==13){
+		document.getElementById("login_button").click();
+	}
+}
+
+/* DESCRIPTION
+ * 	Add cookie
+ * ARGUMENTS
+ * RETURN
+ * NOTES
+ */
+function addCookie(name, value, days, path){    
+    	var name 	= escape(name);  
+    	var value 	= escape(value);  
+    	var expires = new Date();  
+    
+    	expires.setTime(expires.getTime() + days * 3600000 * 24);  
+      
+    	path = path == "" ? "" : ";path=" + path;  
+     
+    	var _expires = (typeof days) == "string" ? "" : ";expires=" + expires.toUTCString();  
+    	document.cookie = name + "=" + value + _expires + path;  
+}  
+
+/* DESCRIPTION
+ * 	Get value from cookie
+ * ARGUMENTS
+ * RETURN
+ * NOTES
+ */
+function getCookieValue(name){
+	var name 	= escape(name);
+	var allcookies 	= document.cookie;
+	name += "=";
+	var pos = allcookies.indexOf(name);
+	if (pos != -1){                                             
+	 	var start	= pos + name.length;                   
+	 	var end 	= allcookies.indexOf(";",start);         
+	 	if (end == -1) end = allcookies.length;          
+		 	var value = allcookies.substring(start,end); 
+	 	return (value);                              
+	}else{    
+	 	return "";  
+	}  
+}
+
+// onlode
+window.onload = function(){  
+    	var userNameValue = getCookieValue("userName");  
+    	document.getElementById("user_input").value = userNameValue;
+    	var userPassValue = getCookieValue("userPass");  
+    	document.getElementById("password_input").value = userPassValue;  
+    	
+    	document.onkeydown = function(event){
+    		if(event.keyCode==13){
+				document.getElementById("login_button").click();
+			}
+    	};
+}  

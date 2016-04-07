@@ -4,11 +4,11 @@
 	require_once("tool/conn.php");
 	require_once("tool/common.php");
 	
-//if(options("login_check")){
+if(options("login_check")){
 //	login_check($_POST['Login_account'], $_POST['Login_password']);
 //}
 
-if(isset($_POST['label'])&&$_POST['label'] == "login_check"){
+//if(isset($_POST['label'])&&$_POST['label'] == "login_check"){
 	login_check($_POST['Login_account'], $_POST['Login_password']);
 }
 
@@ -16,7 +16,7 @@ function login_check($login_account, $login_password){
 //					echo $login_account."+".$login_password;
 //					echo $_POST['login_check']."&&".$_POST['Login_account']."&&".$_POST['Login_password'];
 					$person_info_sql = array(
-							"person_info_by_account",
+							"person_info_for_check",
 							$login_account,
 							$login_password,
 					);
@@ -25,7 +25,8 @@ function login_check($login_account, $login_password){
 					if(count($person_info_data)==1){
 						$_SESSION['login_account']		= $login_account;
 						$_SESSION['login_password']		= $login_password;
-//						echo "sussuses";
+						$_SESSION['login_office']		= $person_info_data[0]["Office"];
+
 						
 						header("HTTP/1.0 200 OK");
 						return true;
@@ -78,7 +79,7 @@ function login_check($login_account, $login_password){
     					<label class="password_ico_img"></label>
     				</span>
     				<span class="user_input_span">
-    					<input id="password_input" class="user_input" type="password" name="password" placeholder="密码" autocomplete="off"/>
+    					<input id="password_input" class="user_input" type="password" name="password" placeholder="密码" autocomplete="off" onkeydown="login_keydown()"/>
     				</span>
     			</p>
     			<input id="login_button" class="login_button" type="button" name="login_button" value="登          录"/>			

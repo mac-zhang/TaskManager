@@ -1,6 +1,12 @@
 
 <?php 
 	include_once "tool/common.php";  
+	include_once "load_task.php";
+	
+//if(options("login_exit")){
+if(isset($_POST['label'])&&$_POST['label'] == "login_exit"){
+	session_unset();
+}
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN" class="uk-height-1-1">
@@ -15,12 +21,25 @@
 	</head>
 
 <body>
-	<div class="task_background">
-		<?php
+	<?php
 			common_header();
-		?>
+	?>
+	<div class="task_background">
+		
 		<div class="task_frame">
-			这是一个测试页面！
+	<?php
+			stuff_list();
+	?>
+			<div class='task_list_frame'>
+	<?php
+				task_search();
+				
+				task_list_title();
+
+				task_list_content();
+	?>			
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
