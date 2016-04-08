@@ -26,6 +26,7 @@ function login_check($login_account, $login_password){
 						$_SESSION['login_account']		= $login_account;
 						$_SESSION['login_password']		= $login_password;
 						$_SESSION['login_office']		= $person_info_data[0]["Office"];
+						$_SESSION['login_level']		= $person_info_data[0]["Level"];
 
 						
 						header("HTTP/1.0 200 OK");

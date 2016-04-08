@@ -89,6 +89,7 @@ html, body {
     font-family		: arial, 'Hiragino Sans GB', 'Microsoft Yahei';
     color: #FF4040;
     border-radius: 3px;
+    outline: none;
     cursor: pointer;
     transition: border .25s linear,color .25s linear,background-color .25s linear;
     -webkit-font-smoothing: subpixel-antialiased;

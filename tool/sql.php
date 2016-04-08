@@ -42,5 +42,10 @@ return array(
 		1,
 		"stuff_id",
 	),
+	
+	"task_info_search_all"=>array(
+		"SELECT * FROM `task_info` Order By ID DESC",
+		0,
+	),
 );
 ?>
